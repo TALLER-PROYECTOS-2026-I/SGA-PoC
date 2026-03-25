@@ -1,0 +1,33 @@
+name: Despliegue Backend SGA-PoC (Propio)
+
+on:
+  push:
+    branches:
+      - master # Se activa al subir a tu rama master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Sincronizar Código'
+        uses: actions/checkout@v4
+
+      - name: 'Configurar Node.js v20'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 'Instalar y Compilar Backend'
+        shell: bash
+        run: |
+          pushd ./backend
+          npm install
+          npm run build --if-present
+          popd
+
+      - name: 'Desplegar a Azure Functions'
+        uses: Azure/functions-action@v1
+        with:
+          app-name: 'func-poc-linux-lvvcbfse5nadi' # Tu recurso de Azure
+          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+          package: './backend'
