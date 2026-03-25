@@ -1,0 +1,55 @@
+name: Deploy SGA PoC (Front & Back)
+
+on:
+  push:
+    branches:
+      - master # Tu rama principal actual
+      - main
+
+env:
+  NODE_VERSION: '22.x' # La versión que definimos
+
+jobs:
+  # --- TRABAJO 1: DESPLIEGUE DEL FRONTEND ---
+  deploy-frontend:
+    name: Desplegar Web (Frontend)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Desplegar a Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "SGA_FRONTEND" # Ajustado a tu carpeta real
+          api_location: ""            
+          output_location: "dist"    # Verifica si tu build genera 'dist' o 'build'
+
+  # --- TRABAJO 2: DESPLIEGUE DEL BACKEND ---
+  deploy-backend:
+    name: Desplegar API (Backend)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js v22
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Instalar y Compilar Backend
+        run: |
+          cd SGA_BACKEND # Ajustado a tu carpeta real
+          npm install
+          npm run build --if-present
+
+      - name: Desplegar a Azure Functions
+        uses: Azure/functions-action@v1
+        with:
+          app-name: 'func-poc-linux-lvvcbfse5nadi' # Tu App Name real
+          package: './SGA_BACKEND' # Ajustado a tu carpeta real
+          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
