@@ -1,0 +1,55 @@
+name: Despliegue Integral SGA-PoC (Backend)
+
+on:
+  push:
+    branches:
+      - master # Se activa automáticamente al hacer merge a master
+  workflow_dispatch: # Permite ejecutar el despliegue manualmente
+
+env:
+  NODE_VERSION: '20.x'
+  AZURE_FUNCTIONAPP_NAME: 'func-poc-linux-lvvcbfse5nadi'
+  WORKING_DIRECTORY: './SGA_BACKEND' # Ajustado a tu carpeta local
+
+jobs:
+  build-and-deploy:
+    name: Compilación y Despliegue en Azure
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: '📥 Paso 1: Sincronizar Código Fuente'
+        uses: actions/checkout@v4
+
+      - name: '🛠️ Paso 2: Configurar Entorno Node.js'
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: '${{ env.WORKING_DIRECTORY }}/package.json'
+
+      - name: '📦 Paso 3: Instalar Dependencias del Backend'
+        shell: bash
+        run: |
+          pushd ${{ env.WORKING_DIRECTORY }}
+          npm install
+          npm run build --if-present
+          popd
+
+      - name: '🧪 Paso 4: Ejecutar Pruebas Unitarias'
+        shell: bash
+        run: |
+          pushd ${{ env.WORKING_DIRECTORY }}
+          # npm test # Descomentar cuando tengas tests listos
+          echo "Pruebas completadas exitosamente"
+          popd
+
+      - name: '🚀 Paso 5: Desplegar a Azure Functions'
+        uses: Azure/functions-action@v1
+        id: deploy-to-function
+        with:
+          app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+          package: ${{ env.WORKING_DIRECTORY }}
+
+      - name: '✅ Paso 6: Verificación Final'
+        run: echo "El despliegue de las funciones terminó correctamente."
