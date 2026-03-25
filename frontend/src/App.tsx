@@ -3,12 +3,59 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import {AssignmentsPage} from './features/mis-asignaciones/AssignmentsPage'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [showAssignments, setShowAssignments] = useState(false)
 
+  // Si está en vista de asignaciones, mostrar esa página
+  if (showAssignments) {
+    return (
+      <div>
+        <button 
+          onClick={() => setShowAssignments(false)}
+          style={{
+            position: 'fixed',
+            top: '10px',
+            right: '10px',
+            zIndex: 1000,
+            padding: '8px 16px',
+            backgroundColor: '#3b82f6',
+            color: 'white',
+            border: 'none',
+            borderRadius: '6px',
+            cursor: 'pointer'
+          }}
+        >
+          Volver al Home
+        </button>
+        <AssignmentsPage />
+      </div>
+    )
+  }
+
+  // Vista original
   return (
     <>
+      <button 
+        onClick={() => setShowAssignments(true)}
+        style={{
+          position: 'fixed',
+          top: '10px',
+          right: '10px',
+          zIndex: 1000,
+          padding: '8px 16px',
+          backgroundColor: '#8B0000',
+          color: 'white',
+          border: 'none',
+          borderRadius: '6px',
+          cursor: 'pointer'
+        }}
+      >
+        Ver Mis Asignaciones
+      </button>
+
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
