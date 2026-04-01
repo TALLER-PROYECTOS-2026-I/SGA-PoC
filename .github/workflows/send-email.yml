@@ -1,0 +1,35 @@
+name: Notificar a QA
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  notify-qa:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    
+    steps:
+      - name: Enviar notificación a QA
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "🚨 QA: Nuevos cambios listos para probar"
+          to: ${{ secrets.QA_EMAILS }}
+          from: "GitHub Actions"
+          body: |
+            🚨 **NUEVOS CAMBIOS LISTOS PARA QA**
+            
+            Se ha fusionado un Pull Request a la rama `main`.
+            
+            **Detalles:**
+            • Título: ${{ github.event.pull_request.title }}
+            • Autor: ${{ github.event.pull_request.user.login }}
+            • Link: ${{ github.event.pull_request.html_url }}
+            
+            ✅ Los cambios están disponibles en `main` para pruebas.
