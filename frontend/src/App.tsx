@@ -1,4 +1,3 @@
-
 import { PublicClientApplication } from "@azure/msal-browser";
 import { MsalProvider, useMsal } from "@azure/msal-react";
 import { useEffect, useState } from "react";
@@ -117,4 +116,3 @@ function App() {
 }
 
 export default App;
-
