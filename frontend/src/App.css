@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* =========================
    RESET GENERAL
 ========================= */
@@ -99,65 +98,7 @@ body {
 .login-button:hover {
   background-color: #a61f1f;
   transform: translateY(-1px);
-=======
-/* Estilo para el contador de notificaciones mas cambios*/
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-}
-
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
->>>>>>> 1d185970861b5ab7c31a975681ddeb99463a7361
 }
 
 #center {
@@ -173,8 +114,6 @@ body {
     gap: 18px;
   }
 }
-
-<<<<<<< HEAD
 /* =========================
    DASHBOARD LAYOUT
 ========================= */
@@ -722,28 +661,6 @@ body {
 ========================= */
 @media (max-width: 900px) {
   .login-page {
-=======
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
->>>>>>> 1d185970861b5ab7c31a975681ddeb99463a7361
     flex-direction: column;
     text-align: center;
   }
@@ -831,8 +748,6 @@ body {
     left: 0;
     border-left-color: var(--border);
   }
-<<<<<<< HEAD
-
   .dashboard-layout {
     flex-direction: column;
     height: auto;
@@ -1213,10 +1128,3 @@ body {
   font-size: 14px;
   color: #555;
 }
-=======
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
-}
->>>>>>> 1d185970861b5ab7c31a975681ddeb99463a7361
