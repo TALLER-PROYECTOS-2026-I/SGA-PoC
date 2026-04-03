@@ -109,3 +109,726 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background-color: #1a232e; /* Azul oscuro institucional */
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.logoContainer {
+  padding: 30px 20px;
+}
+
+.logo {
+  width: 100%;
+  filter: brightness(0) invert(1);
+}
+
+.nav {
+  margin-top: 20px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  padding: 15px 25px;
+  gap: 15px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background 0.3s;
+}
+
+.active {
+  background-color: #ffffff15;
+  border-right: 4px solid white;
+}
+
+/* Main Content */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: #d32f2f; /* Rojo institucional */
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  position: relative;
+}
+
+.alertBanner {
+  background: white;
+  padding: 6px 18px;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.clockIcon {
+  color: #2196f3;
+}
+
+/* User Menu Dropdown */
+.userSection {
+  position: relative;
+}
+
+.userBadge {
+  background: white;
+  padding: 8px 15px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.dropdown {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 180px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+.dropdownItem {
+  padding: 12px 15px;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout {
+  color: #000;
+}
+
+.divider {
+  margin: 0;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+/* Action Cards */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.actionCard {
+  background: white;
+  border: 2px solid #999;
+  border-radius: 12px;
+  width: 420px;
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.actionCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.iconWrapper {
+  background-color: #d32f2f;
+  color: white;
+  width: 70px;
+  height: 60px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.2rem;
+}
+
+.cardText {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1a232e;
+}
+
+/* ===== PERFIL DIRECTOR - ESTILO CENTRAL ===== */
+/* ===== PERFIL DIRECTOR - CON SIDEBAR ===== */
+
+.perfil-director {
+  display: flex;
+  height: 100vh;
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f2f5;
+}
+
+/* Sidebar */
+.perfil-director .sidebar {
+  width: 200px;
+  background-color: #0d1b2a;
+  color: white;
+  padding: 20px;
+}
+
+.perfil-director .sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.perfil-director .sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.perfil-director .sidebar li {
+  margin: 10px 0;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.perfil-director .sidebar li:hover {
+  color: #d90429;
+}
+
+/* Main */
+.perfil-director .main {
+  flex: 1;
+  padding: 12px;
+  display: flex;
+  
+  align-items: center;     /* Centra la tarjeta vertical */
+  background-color: #f4f4f4;
+}
+
+/* Tarjeta de perfil */
+.perfil-director .perfil-box {
+  background-color: white;
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Avatar o logo */
+.perfil-director .perfil-box img,
+.perfil-director .avatar {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 25px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #d90429;
+}
+
+/* Título */
+.perfil-director h2 {
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 22px;
+  text-align: center;
+}
+
+/* Formulario */
+.perfil-director .form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.perfil-director .form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.perfil-director .form input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+.perfil-director .form input:focus {
+  border-color: #d90429;
+  outline: none;
+}
+
+/* Botones centrados debajo del formulario */
+.perfil-director .botones {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+  width: 100%;
+}
+
+.perfil-director .botones button {
+  padding: 10px 25px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.perfil-director .botones .volver {
+  background-color: #333;
+  color: white;
+}
+
+.perfil-director .botones .volver:hover {
+  background-color: #555;
+}
+
+.perfil-director .botones .editar {
+  background-color: #d90429;
+  color: white;
+}
+
+.perfil-director .botones .editar:hover {
+  background-color: #ff1e3c;
+}
+
+.perfil-director .botones .guardar {
+  background-color: #2ec4b6;
+  color: white;
+}
+
+.perfil-director .botones .guardar:hover {
+  background-color: #38d9a9;
+}
+
+/* Mensaje */
+.perfil-director .mensaje {
+  margin-top: 15px;
+  color: green;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Header user menu */
+.perfil-director .header {
+  width: 100%;
+  background-color: red;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.perfil-director .user-menu {
+  position: relative;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Dropdown */
+.perfil-director .dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background: white;
+  color: black;
+  border-radius: 6px;
+  padding: 10px;
+  width: 180px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.perfil-director .dropdown p {
+  margin: 5px 0;
+}
+
+.perfil-director .dropdown .item {
+  cursor: pointer;
+}
+
+.perfil-director .dropdown .item:hover {
+  background: #f0f0f0;
+}
+
+
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+}
+
+.login-box {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-box button:hover {
+  background: darkred;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+.dashboard {
+  display: flex;
+}
+
+.cards {
+  display: flex;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+/* RESET */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 220px;
+  background-color: #0b1d2a;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+  position: fixed;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+/* ===== MAIN ===== */
+.main {
+  margin-left: 220px;
+  padding: 20px;
+}
+
+/* ===== HEADER ===== */
+.header {
+  background-color: #d50000;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: flex-end;
+  font-weight: bold;
+}
+
+/* ===== DASHBOARD CARDS ===== */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 80px;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  width: 200px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card p {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* ===== FORMULARIOS ===== */
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* ===== BOTONES ===== */
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:last-child {
+  background-color: #d50000;
+  color: white;
+}
+
+/* ===== LOGIN ===== */
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  background: white;
+  padding: 30px;
+  width: 300px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.login-box input {
+  width: 100%;
+}
+
+/* ===== SILABUS ===== */
+.card button {
+  margin-top: 10px;
+  background-color: #0b1d2a;
+  color: white;
+}
+
+/* ===== LAYOUT ===== */
+.layout {
+  display: flex;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 230px;
+  height: 100vh;
+  background: #0b1d2a;
+  color: white;
+  padding: 20px;
+  position: fixed;
+}
+
+.logo {
+  margin-bottom: 40px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+/* ===== MAIN ===== */
+.main {
+  margin-left: 230px;
+  width: 100%;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
+.header {
+  background: #d51900;
+  color: white;
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.user {
+  background: white;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* ===== CARDS ===== */
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  height: 70vh;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  width: 220px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* ICONOS */
+.icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.red {
+  color: red;
+}
+
+.check {
+  color: red;
+}
+.user-icon {
+  font-size: 30px;
+  color: #0b1d2a;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  height: 40vh;
+  flex-wrap: wrap; /* 👈 IMPORTANTE */
+}
+
+.asignar-docente {
+  display: flex;
+  justify-content: center; /* centra horizontalmente */
+  align-items: center;     /* centra verticalmente */
+  height: 100vh;           /* ocupa toda la altura de la pantalla */
+  background-color: #f5f5f5;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;               /* espacio entre inputs y elementos */
+  padding: 20px;
+  background-color: white; /* caja blanca */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 350px;            /* ancho fijo */
+}
+
+.main input,
+.main textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.botones button {
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: #d32f2f;
+  color: white;
+  font-weight: bold;
+}
+
+.botones button:hover {
+  background-color: #b71c1c;
+}
+
